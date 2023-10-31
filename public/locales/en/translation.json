@@ -1,0 +1,20 @@
+{
+    "layout":{
+        "home":"Home",
+        "search":"Search",
+        "explore":"Explore",
+        "messages":"Messages",
+        "notifications":"Notifications",
+        "create":"Create",
+        "profile":"Profile",
+        "more":"More",
+        "switchappearance":"Switch appearance",
+        "darkmode":"Dark mode",
+        "recent":"Recent",
+        "norecentsearches":"No recent searches.",
+        "createnewpost":"Create new post",
+        "dragphotosandvideoshere":"Drag photos and videos here",
+        "selectfromcomputer":"Select from computer",
+        "post":"Post"
+    }    
+}

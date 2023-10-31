@@ -1,0 +1,88 @@
+#app {
+  height: 100%;
+}
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+/* body {
+  background: #eee;
+  font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+  font-size: 14px;
+  color: #000;
+  margin: 0;
+  padding: 0;
+} */
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-button-next,
+.swiper-button-prev {
+  /* background-color: white; */
+  background-position: center;
+  background-size: 20px;
+  background-repeat: no-repeat;
+  /* padding: 8px 16px; */
+  /* border-radius: 100%; */
+}
+
+.swiper-button-prev {
+  background-image: url("./img/574-5740980_transparent-slider-arrow-png-indian-coin-icon-png.png");
+}
+
+.swiper-button-next {
+  background-image: url("./img/574-5740980_transparent-slider-arrow-png-indian-coin-icon-png.png");
+  transform: rotate(-180deg);
+}
+
+.swiper-button-next::after,
+.swiper-button-prev::after {
+  content: "";
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  height: 100vh;
+  display: grid;
+}
+.modal-content {
+  background-color: white;
+  width: 400px;
+  margin: 0 auto 100px auto;
+  height: 620px;
+  text-align: center;
+  align-items: center;
+}
+.modal-content2 {
+  width: 400px;
+  margin: 0 auto 100px auto;
+  height: 620px;
+  text-align: center;
+  align-items: center;
+}
