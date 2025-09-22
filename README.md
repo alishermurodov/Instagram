@@ -10,3 +10,5 @@ Currently, two official plugins are available:
 "# Instagram"
 
 https://www.timsanteford.com/posts/manage-dark-and-light-modes-in-your-react-app-with-fluent-ui/ 
+
+https://developer.mozilla.org/ru/docs/Web/Progressive_web_apps/Tutorials/js13kGames/Installable_PWAs
