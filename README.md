@@ -12,3 +12,44 @@ Currently, two official plugins are available:
 https://www.timsanteford.com/posts/manage-dark-and-light-modes-in-your-react-app-with-fluent-ui/ 
 
 https://developer.mozilla.org/ru/docs/Web/Progressive_web_apps/Tutorials/js13kGames/Installable_PWAs
+
+import { defineConfig } from 'vite';
+import react from '@vitejs/plugin-react';
+import { VitePWA } from 'vite-plugin-pwa';
+
+export default defineConfig({
+  plugins: [
+    react(),
+    VitePWA({
+      registerType: 'autoUpdate',
+      manifest: {
+        name: 'My React Vite App',
+        short_name: 'MyApp',
+        description: 'React + Vite PWA пример',
+        theme_color: '#ffffff',
+        background_color: '#ffffff',
+        display: 'standalone',
+        scope: '/',
+        start_url: '/',
+        icons: [
+          {
+            src: '/pwa-192x192.png',
+            sizes: '192x192',
+            type: 'image/png'
+          },
+          {
+            src: '/pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png'
+          },
+          {
+            src: '/pwa-512x512.png',
+            sizes: '512x512',
+            type: 'image/png',
+            purpose: 'any maskable'
+          }
+        ]
+      }
+    })
+  ]
+});
