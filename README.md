@@ -136,3 +136,9 @@ export default {
   },
 };
 
+
+///////////////////
+PWA (documantation) for Installing
+
+https://www.saurabhmisra.dev/setup-react-pwa-using-vite/
+
