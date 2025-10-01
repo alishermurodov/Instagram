@@ -170,3 +170,40 @@ export default {
 };
 
 
+
+//////
+/// <reference lib="webworker" />
+
+import { precacheAndRoute } from 'workbox-precaching'
+import { registerRoute } from 'workbox-routing'
+import { NetworkFirst, CacheFirst, StaleWhileRevalidate } from 'workbox-strategies'
+
+// ⚡ Кешировать все билдовые ассеты (vite сам подставит список)
+precacheAndRoute(self.__WB_MANIFEST)
+
+// 🟢 HTML (страницы) → NetworkFirst
+registerRoute(
+  ({ request }) => request.mode === 'navigate',
+  new NetworkFirst({ cacheName: 'html-cache' })
+)
+
+// 🟡 API → NetworkFirst
+registerRoute(
+  ({ url }) => url.pathname.startsWith('/api'),
+  new NetworkFirst({ cacheName: 'api-cache' })
+)
+
+// 🔵 CSS/JS → StaleWhileRevalidate
+registerRoute(
+  ({ request }) => request.destination === 'script' || request.destination === 'style',
+  new StaleWhileRevalidate({ cacheName: 'static-resources' })
+)
+
+// 🖼️ Картинки → CacheFirst
+registerRoute(
+  ({ request }) => request.destination === 'image',
+  new CacheFirst({
+    cacheName: 'images-cache',
+    expiration: { maxEntries: 50, maxAgeSeconds: 60 * 60 * 24 * 30 },
+  })
+)
