@@ -142,3 +142,31 @@ PWA (documantation) for Installing
 
 https://www.saurabhmisra.dev/setup-react-pwa-using-vite/
 
+
+
+import ReactRefreshPlugin from "@vitejs/plugin-react";
+
+export default {
+  plugins: [ReactRefreshPlugin()],
+  define: {
+    "process.env.VITE_BASE_URL": process.env.VITE_BASE_URL,
+    "import.meta.env.COLOR_SCHEME_LIGHT": JSON.stringify("#f0f0f0"),
+    "import.meta.env.COLOR_SCHEME_DARK": JSON.stringify("black"),
+  },
+
+  build: {
+    cssCodeSplit: false,
+    terserOptions: {
+      compress: {
+        global_defs: {
+          __VUE_OPTIONS_API__: true,
+          __VUE_PROD_DEVTOOLS__: true,
+          "process.env.COLOR_SCHEME_LIGHT": "#f0f0f0",
+          "process.env.COLOR_SCHEME_DARK": "black",
+        },
+      },
+    },
+  },
+};
+
+
