@@ -207,3 +207,50 @@ registerRoute(
     expiration: { maxEntries: 50, maxAgeSeconds: 60 * 60 * 24 * 30 },
   })
 )
+
+sw.ts ///////////
+
+/// <reference lib="webworker" />
+
+import { precacheAndRoute } from 'workbox-precaching'
+import { registerRoute } from 'workbox-routing'
+import { NetworkFirst, CacheFirst, StaleWhileRevalidate } from 'workbox-strategies'
+
+// Кешировать билдовые ассеты
+precacheAndRoute(self.__WB_MANIFEST)
+
+// HTML / SPA
+registerRoute(
+  ({ request }) => request.mode === 'navigate',
+  new NetworkFirst({
+    cacheName: 'html-cache',
+    networkTimeoutSeconds: 3,
+  })
+)
+
+// JS/CSS
+registerRoute(
+  ({ request }) => request.destination === 'script' || request.destination === 'style',
+  new StaleWhileRevalidate({ cacheName: 'static-resources' })
+)
+
+// Картинки
+registerRoute(
+  ({ request }) => request.destination === 'image',
+  new CacheFirst({
+    cacheName: 'images-cache',
+    expiration: { maxEntries: 50, maxAgeSeconds: 60 * 60 * 24 * 30 },
+  })
+)
+
+// API → Кешируем **все GET-запросы** к серверу
+const API_BASE = import.meta.env.VITE_API_URL || ''
+
+registerRoute(
+  ({ url, request }) =>
+    url.origin === API_BASE && request.method === 'GET',
+  new NetworkFirst({
+    cacheName: 'api-cache',
+    networkTimeoutSeconds: 5,
+  })
+)
