@@ -254,3 +254,9 @@ registerRoute(
     networkTimeoutSeconds: 5,
   })
 )
+
+
+
+методы CTL
+
+https://hissing-tibia-07d.notion.site/1c2276c8b8098091b2cbfff4bf403eb8?v=1c2276c8b80981118cc1000c5f265471
